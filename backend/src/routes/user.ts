@@ -2,18 +2,19 @@ import { Hono } from 'hono'
 import { PrismaClient} from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { sign} from 'hono/jwt'
-import { SignupInput, SigninInput, signinInput } from '@pushpenderrajput/medium'
-
+import { signupInput, signinInput } from '@pushpenderrajput/medium'
+import { cors } from 'hono/cors'
+import { use } from 'hono/jsx'
 export const userRouter = new Hono<{
     Bindings: {
         DATABASE_URL: string;
         JWT_SECRET: string;
     }
 }>();
-
+userRouter.use('/*',cors());
 userRouter.post('/signup',async (c)=>{
   const body = await c.req.json();
-  const {success} = signinInput.safeParse(body)
+  const {success} = signupInput.safeParse(body)
   if(!success){
     c.status(411)
     return c.json({

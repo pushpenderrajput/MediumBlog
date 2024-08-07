@@ -2,8 +2,8 @@ import { Hono } from 'hono'
 import { PrismaClient} from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { verify } from 'hono/jwt'
-import { createBlogInput, CreateBlogInput, UpdateBlogInput } from '@pushpenderrajput/medium'
-
+import { createBlogInput, updateBlogInput } from '@pushpenderrajput/medium'
+import { cors } from 'hono/cors'
 export const blogRouter = new Hono<{
     Bindings: {
         DATABASE_URL: string;
@@ -14,7 +14,7 @@ export const blogRouter = new Hono<{
     }
     
 }>()
-
+blogRouter.use('/*',cors());
 blogRouter.use('/*',async (c,next)=>{
   const authHeader = await c.req.header('authorization') || "";
   const user = await verify(authHeader,c.env.JWT_SECRET);
@@ -59,7 +59,7 @@ blogRouter.post('/',async (c)=>{
 })
 blogRouter.put('/',async (c)=>{
     const body = await c.req.json()
-    const {success} = createBlogInput.safeParse(body)
+    const {success} = updateBlogInput.safeParse(body)
     if(!success){
       c.status(411)
       return c.json({
@@ -90,7 +90,19 @@ blogRouter.get('/bulk',async (c)=>{
   const prisma = new PrismaClient({
     datasourceUrl:c.env.DATABASE_URL,
   }).$extends(withAccelerate())
-  const blogs = await prisma.post.findMany();
+  const blogs = await prisma.post.findMany({
+    select:{
+      content:true,
+      title:true,
+      id:true,
+      createdAt:true,
+      author:{
+        select:{
+          name:true
+        }
+      }
+    }
+  });
   return c.json({blogs})
 })
 blogRouter.get('/:id',async (c)=>{
