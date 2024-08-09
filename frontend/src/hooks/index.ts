@@ -25,7 +25,6 @@ export const useBlogs = () => {
         })
         .then(response=>{
             setBlogs(response.data.blogs);
-            console.log(response.data.blogs)
             setLoading(false);
 
         })
@@ -36,3 +35,23 @@ export const useBlogs = () => {
         loading,
     };
 };
+
+export const useBlog = ({id}:{id:string}) =>{
+    const [loading, setLoading] = useState(true);
+    const [blog, setBlog] = useState<Blog[]>([]);
+    useEffect(()=>{
+        axios.get(`${BACKEND_URL}/api/v1/blog/${id}`,{
+            headers:{
+                Authorization:localStorage.getItem('token')
+            }
+        })
+        .then(res =>{
+            setBlog(res.data.blog)
+            setLoading(false)
+        })
+    },[])
+    return {
+        blog,
+        loading
+    }
+}

@@ -114,6 +114,18 @@ blogRouter.get('/:id',async (c)=>{
         const blog = await prisma.post.findUnique({
             where:{
                 id:Number(blogId)
+                
+            },
+            select:{
+              id:true,
+              title:true,
+              content:true,
+              createdAt:true,
+              author:{
+                select:{
+                  name:true
+                }
+              }
             }
     
         })
