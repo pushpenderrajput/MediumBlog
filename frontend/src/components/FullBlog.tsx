@@ -17,7 +17,7 @@ export const FullBlog = ({ authorName, title, content, createdAt }: BLogCardProp
                         {title}
 
                     </div>
-                    <div text-slate-500 pt-2>
+                    <div className="pt-4 text-slate-500">
                         Posted on: {createdAt}
 
                     </div>
