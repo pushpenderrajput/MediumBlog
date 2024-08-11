@@ -14,7 +14,7 @@ export const Publish = () => {
             <div className="max-w-screen-lg w-full">
 
                 <input onChange={(e)=>{setTitle(e.target.value)}} type="text" className="block outline-none px-2.5 py-4 my-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg " placeholder="Title" required></input>
-                <TextArea onChange={(e)=>{setDesc(e.target.value)}}/>
+                <TextArea onChange={(e)=>{setDesc((e.target as HTMLInputElement).value)}}/>
                 <button onClick={async ()=>{
                    const res =  await axios.post(`${BACKEND_URL}/api/v1/blog`,{
                         title,

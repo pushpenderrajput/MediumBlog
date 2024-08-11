@@ -40,19 +40,19 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                     {type === "signup" ? <LabelledInput label="Name" placeholder="Pushpender Rajput" onChange={(e) => {
                         setpostInputs({
                             ...postInputs,
-                            name: e.target.value
+                            name: (e.target as HTMLInputElement).value,
                         })
                     }} /> : null}
                     <LabelledInput label="Username" type="email" placeholder="yourmail@mail.com" onChange={(e) => {
                         setpostInputs({
                             ...postInputs,
-                            username: e.target.value
+                            username: (e.target as HTMLInputElement).value
                         })
                     }} />
                     <LabelledInput label="Password" type="password" placeholder="Password" onChange={(e) => {
                         setpostInputs({
                             ...postInputs,
-                            password: e.target.value
+                            password: (e.target as HTMLInputElement).value
                         })
                     }} />
                     <button onClick={sendRequest} type="button" className="w-full mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
