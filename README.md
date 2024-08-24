@@ -7,7 +7,7 @@ A blog website similar to Medium, built with modern technologies.
 <img src="https://media4.giphy.com/media/S7E9wVhK9HWzf5uFE2/giphy.gif">
 </div>
 <div align="center">
-<a href="https://medium-blog-mu-jade.vercel.app/" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/06/29/16/53/click-here-button-1487274_1280.png" height="250px"></a>
+<a href="https://pc-medium-blog.vercel.app/" target="_blank"><img src="https://cdn.pixabay.com/photo/2016/06/29/16/53/click-here-button-1487274_1280.png" height="250px"></a>
 </div>
 
 ## Technology Stack
