@@ -34,7 +34,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                         {type === "signup" ? "Create Account" : "Welcome Back!"}
 
                     </div>
-                    <div className="text-slate-400">{type === "signin" ? "Don't have an account?":"Already have an account?"}<Link to={type === "signin" ? "/signup" : "/signin"}>{type === "signin" ? "Sign up" : "Sign in"}</Link></div>
+                    <div className="text-slate-400">{type === "signin" ? "Don't have an account?":"Already have an account?"}<Link to={type === "signin" ? "/signup" : "/signin"}>{type === "signin" ?<span className="text-blue-600 font-semibold">Sign in</span>  : <span className="text-blue-600 font-semibold"> Sign up</span> }</Link></div>
                 </div>
                 <div className="pt-4">
                     {type === "signup" ? <LabelledInput label="Name" placeholder="Pushpender Rajput" onChange={(e) => {
