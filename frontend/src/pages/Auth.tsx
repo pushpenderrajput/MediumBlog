@@ -34,7 +34,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                         {type === "signup" ? "Create Account" : "Welcome Back!"}
 
                     </div>
-                    <div className="text-slate-400">{type === "signin" ? "Don't have an account?":"Already have an account?"}<Link to={type === "signin" ? "/signup" : "/signin"}>{type === "signin" ?<span className="text-blue-600 font-semibold">Sign in</span>  : <span className="text-blue-600 font-semibold"> Sign up</span> }</Link></div>
+                    <div className="text-slate-400">{type === "signin" ? "Don't have an account?":"Already have an account?"}<Link to={type === "signin" ? "/signup" : "/signin"}>{type === "signin" ?<span className="text-blue-600 font-semibold">Sign up</span>  : <span className="text-blue-600 font-semibold"> Sign in</span> }</Link></div>
                 </div>
                 <div className="pt-4">
                     {type === "signup" ? <LabelledInput label="Name" placeholder="Pushpender Rajput" onChange={(e) => {
@@ -56,7 +56,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
                         })
                     }} />
                     <button onClick={sendRequest} type="button" className="w-full mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
-                        {type === "signup" ? "Sign in" : "Sign up"}
+                        {type === "signup" ? "Sign Up" : "Sign In"}
                     </button>
                     {/* {JSON.stringify(postInputs)} */}
                 </div>
